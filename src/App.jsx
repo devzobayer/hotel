@@ -11,6 +11,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import User from './components/User/User';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/roomlist" element={<PrivateRoute><RoomList/></PrivateRoute>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
+          <Route path='/user' element={<User/>} />
             <Route path="*" element={<NotFound/>} />
         </Routes>
       </Router>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Register.css';
-import { createUserWithEmailAndPassword, updateProfile,  GoogleAuthProvider,signInWithRedirect } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile,  GoogleAuthProvider,signInWithPopup} from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import { sendVerificationEmail } from '../firebase/sendEmailVerification';
 import { useNavigate } from 'react-router-dom';
 import Gimg from '../Login/search.png'
 import RegImg from './register.png'
 
-const provider = new GoogleAuthProvider();
+
 
 
 const Register = () => {
@@ -18,7 +18,7 @@ const Register = () => {
     const [success, setSuccess] = useState(''); // Success message
     const [error, setError] = useState(''); // Error message
       const navigate = useNavigate();
-
+      const provider = new GoogleAuthProvider();
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Clear errors
@@ -56,14 +56,15 @@ const Register = () => {
     const handleGoogleSignIn = async () => {
         setError('');
         setSuccess('');
-        try{
-         
-            signInWithRedirect(auth, provider);
-        
-        }catch(error){
-            setError(error.message);
-        }
-    
+    try {
+        await signInWithPopup(auth, provider);
+        setSuccess('Logged in Successfully with Google');
+        setTimeout(() => {
+            navigate(from);
+        }, 500);
+    } catch (error) {
+        setError(error.message);
+    }
     };
 
     return (

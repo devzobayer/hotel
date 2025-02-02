@@ -9,7 +9,7 @@ const Header = () => {
 
     return (
         <header className="header-container">
-            <div className="header-logo">Hotel MZ</div>
+            <div className="header-logo"></div>
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/roomlist">Room</Link></li>
@@ -18,7 +18,7 @@ const Header = () => {
                 {
                    user ? (
                     <>
-                        <span className='user-name'> {user.displayName}</span>
+                       <Link to='user'> <span className='user-name'> {user.displayName}</span></Link>
                         <button onClick={logout} className="btn-logout mx-2">Logout</button>
                     </>
                 ) : (
