@@ -5,7 +5,7 @@ import { sendVerificationEmail } from '../firebase/sendEmailVerification';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Gimg from './search.png';
 
-import './login.css';
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
