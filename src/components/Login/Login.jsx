@@ -70,17 +70,7 @@ const Login = () => {
         }
     };
 
-    const facebookAuthHandle = async () => {
-        try {
-            await signInWithPopup(auth, facebookProvider);
-            setSuccess('Logged in Successfully with Facebook');
-            setTimeout(() => {
-                navigate(from);
-            }, 500);
-        } catch (e) {
-            setError(e.message);
-        }
-    };
+ 
 
     const handleResendVerification = async () => {
         setError('');
@@ -118,11 +108,9 @@ const Login = () => {
                             <img className='g-img' src={Gimg} alt="" />
                             <span className='g-btn-text'>Sign In with Google</span>
                         </button>
-                        <button className="f-btn" onClick={facebookAuthHandle}>
-                            <span className='f-btn-text'> Facebook</span>
-                        </button>
+                        
                         {showResendVerification && (
-                            <button className='verify-btn mx-2' onClick={handleResendVerification}>Verify Email</button>
+                            <button className='varify-btn mx-2' onClick={handleResendVerification}>Verify Email</button>
                         )}
                     </div>
                 </div>
